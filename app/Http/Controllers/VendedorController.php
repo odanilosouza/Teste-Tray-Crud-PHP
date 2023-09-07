@@ -17,11 +17,11 @@ class VendedorController extends Controller
         return view('vendedores.create');
     }
 
-    public function store(Request $r) {
+    public function store(Request $request) {
         //validação de dados
         $request->validate([
-            'nome' => 'requred|string|max:255',
-            'email' => 'requred|email|unique:vendedores',
+            'nome' => 'required|string|max:255',
+            'email' => 'required|email|unique:vendedores',
         ], [
             'nome.required' => 'O campo nome é obrigatório',
             'email.required' => 'O campo email é obrigatório',
@@ -56,7 +56,7 @@ class VendedorController extends Controller
             'email.email' => 'Este endereço de email já está em uso',
         ]);
 
-        $vendedor = Vendedor::findOrFail($id) {
+        $vendedor = Vendedor::findOrFail($id);
         $vendedor->nome = $request->input('nome');
         $vendedor->email = $request->input('email');
         $vendedor->save();
@@ -65,14 +65,14 @@ class VendedorController extends Controller
         return redirect()->route('vendedores.index')->with('Sucesso', 'Vendedor atualizado com sucesso!');
         }
 
+        public function delete($id) {
+            $vendedor = Vendedor::findOrFail($id);
+            $vendedor->delete();
+
+            return redirect()->route('vendedores.index')->with('Sucess', 'Vendedor excluido com sucesso!');
+
+        }
+
 
     }
 
-    public function delete($id) {
-        $vendedor = Vendedor::findOrFail($id);
-        $vendedor->delete();
-
-        return redirect()->route('vendedores.index')->with('Sucesso', 'Vendedor excluido com sucesso!');
-
-    }
-}
