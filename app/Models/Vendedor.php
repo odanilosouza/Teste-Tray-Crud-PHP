@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vend extends Model
+class Vendedor extends Model
 {
-    public function Vendedor() {
-        return $this->belongsTo((Vendedor::class));
+    public function calcularComissao() {
+        return $this->vendas->sum('valor') * (8.5 / 100); //Comissão fixa
     }
-
-
     use HasFactory;
 }

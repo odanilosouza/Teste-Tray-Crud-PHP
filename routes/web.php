@@ -2,12 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendController;
+use App\Http\Controllers\VendedorController;
 
-Route::get('/vend/create', [VendController::class, ' create']);
-Route::get('/Vend/read', [VendController::class, 'read']);
-Route::get('Vend/all', [VendController::class, 'all']);
-Route::get('/Vend/update',[VendController::class, 'update']);
-Route::get('/Vend/delete', [VendController::class, 'delete']);
+Route::get('/vendedores', [VendedorController::class], 'index');
+Route::get('vendas', [VendController::class]);
 
 Route::get('/', function () {
     return view('welcome');
