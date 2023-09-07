@@ -10,11 +10,11 @@ class VendedorController extends Controller
 {
     public function index() {
         $vendedores = Vendedor::all();
-        return view('vendedores.index', compact('vendedores'));
+        return view('layouts/index');
     }
 
     public function create() {
-        return view('vendedores.create');
+        return view('layouts/create');
     }
 
     public function store(Request $request) {
@@ -36,12 +36,12 @@ class VendedorController extends Controller
 
         $vendedor->save();
         //Redirecionamento para páginas de listagem de vendedores
-        return redirect()->route('vendedores.index')->with('Sucesso', 'Vendedor criado com sucesso!');
+        return redirect()->route('vendedores/index')->with('Sucesso', 'Vendedor criado com sucesso!');
     }
 
     public function edit($id) {
         $vendedor = Vendedor::findOrFail($id);
-        return view('vendedores.edit', compact('vendedor'));
+        return view('vendedores/edit', compact('vendedor'));
     }
 
     public function update(Request $request, $id) {
@@ -62,14 +62,14 @@ class VendedorController extends Controller
         $vendedor->save();
 
         //Redirecionamento para páginas de listagem de vendedores
-        return redirect()->route('vendedores.index')->with('Sucesso', 'Vendedor atualizado com sucesso!');
+        return redirect()->route('vendedores/index')->with('Sucesso', 'Vendedor atualizado com sucesso!');
         }
 
         public function delete($id) {
             $vendedor = Vendedor::findOrFail($id);
             $vendedor->delete();
 
-            return redirect()->route('vendedores.index')->with('Sucess', 'Vendedor excluido com sucesso!');
+            return redirect()->route('vendedores/index')->with('Sucess', 'Vendedor excluido com sucesso!');
 
         }
 
