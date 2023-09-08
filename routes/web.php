@@ -7,12 +7,13 @@ use App\Http\Controllers\VendedorController;
 use App\Models\Vendedor;
 
 //Rotas para vendedores
-Route::post('/vendedores', [VendedorController::class, 'index']);
+Route::get('/', [VendedorController::class,'welcome']);
+Route::get('/vendedores', [VendedorController::class, 'index']);
 Route::get('/vendedores/create', [VendedorController::class, 'create']);
-Route::get('/vendedores/store', [VendedorController::class, 'store']);
-Route::get('/vendedores/{id}/edit', [VendedorController::class, 'edit'])->name('vendedor.edit');
-Route::put('/vendedores/{id}/update', [VendedorController::class, 'update']);
-Route::delete('/vendedores/{id}', [VendedorController::class, 'delete']);
+Route::post('/vendedores/store', [VendedorController::class, 'store']);
+Route::get('/vendedores/{id}/edit', [VendedorController::class, 'edit']);
+Route::put('/vendedores/{id}/update', [VendedorController::class, 'update'])->name('vendedores.update');
+Route::get('/vendedores/{id}/delete', [VendedorController::class, 'delete']);
 
 
 //Rotas para vendas
@@ -27,6 +28,6 @@ Route::delete('/vendas/{id}', [VendController::class, 'delete']);
 
 //Rota para envio de e-mails- próxima fase
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
