@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendaController;
 use App\Http\Controllers\VendedorController;
@@ -17,3 +18,5 @@ Route::get('/vendedores/{id}/delete', [VendedorController::class, 'delete']);
 Route::get('/vendedores/{vendedorId}/vendas', [VendaController::class, 'vendas']);
 Route::get('/vendedores/{vendedorId}/cadastrar_venda', [VendaController::class, 'createView']);
 Route::post('/vendedores/{vendedorId}/vendas', [VendaController::class, 'post']);
+
+//Rora para os e-mail

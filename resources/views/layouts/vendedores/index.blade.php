@@ -42,4 +42,5 @@
     <br/>
 
     <a href="/vendedores/cadastrar"> Cadastrar </a>
+    <a href="/vendedores" type="submit" class="btn btn-primary">Voltar</a href="/vendedores">
 @endsection
