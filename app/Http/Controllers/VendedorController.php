@@ -22,16 +22,10 @@ class VendedorController extends Controller
     }
 
     public function store(Request $request) {
-        //validação de dados
         $request->validate([
             'nome' => 'required',
             'email' => 'required|email|unique:vendedores',
         ]);
-
-        // Vendedor::create([
-        //     'nome' => $request->nome,
-        //     'email' => $request->email,
-        // ]);
 
         $vendedor = new Vendedor();
         $vendedor->nome = $request->input('nome');
