@@ -1,15 +1,16 @@
 <?php
 
+use App\Http\Controllers\Mails\RelatorioVendasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendController;
 use App\Http\Controllers\VendedorController;
 use App\Models\Vendedor;
 
 //Rotas para vendedores
-Route::get('/vendedores', [VendedorController::class, 'index']);
+Route::post('/vendedores', [VendedorController::class, 'index']);
 Route::get('/vendedores/create', [VendedorController::class, 'create']);
-Route::post('/vendedores/store', [VendedorController::class, 'store']);
-Route::get('/vendedores/{id}/edit', [VendedorController::class, 'edit']);
+Route::get('/vendedores/store', [VendedorController::class, 'store']);
+Route::get('/vendedores/{id}/edit', [VendedorController::class, 'edit'])->name('vendedor.edit');
 Route::put('/vendedores/{id}/update', [VendedorController::class, 'update']);
 Route::delete('/vendedores/{id}', [VendedorController::class, 'delete']);
 
@@ -24,16 +25,7 @@ Route::put('/vendas/{id}/update', [VendController::class, 'update']);
 Route::delete('/vendas/{id}', [VendController::class, 'delete']);
 
 
-
-
-
-
-
-
-
-
-
-
+//Rota para envio de e-mails- próxima fase
 
 Route::get('/', function () {
     return view('welcome');
