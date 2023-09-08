@@ -11,7 +11,7 @@ class Vendedor extends Model
     protected $fillable = ['nome', 'email'];
 
     public function vendas() {
-        return $this->hasMany(Vend::class, 'vendedor_id');
+        return $this->hasMany(Venda::class, 'vendedor_id');
     }
 
     use HasFactory;
