@@ -1,11 +1,10 @@
-@extends('layouts.app') <!-- Estendendo o layout principal -->
+@extends('app')
 
-@section('content') <!-- Preenchendo a seção 'content' -->
+@section('content')
     <h1>Criar Nova Venda</h1>
 
     <form method="POST" action="/vendedores/{{ request('vendedorId') }}/vendas">
-        @csrf <!-- Token CSRF para proteção contra ataques de falsificação de solicitação entre sites -->
-
+        @csrf
         <div class="form-group">
             <label for="nome">Valor da venda</label>
             <input type="text" class="form-control" id="valor" name="valor" required>
@@ -14,8 +13,7 @@
             <label for="nome">Data da Venda</label>
             <input type="date" class="form-control" id="data" name="data" required>
         </div>
-
-
+        <br/>
 
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>

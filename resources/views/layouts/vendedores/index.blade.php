@@ -12,22 +12,34 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($vendedores as $vendedor)
+
+
+            @if (!empty($vendedores))
+
+                @foreach ($vendedores as $vendedor)
+                    <tr>
+                        <td>{{ $vendedor->id }}</td>
+                        <td>{{ $vendedor->nome }}</td>
+                        <td>{{ $vendedor->email }}</td>
+                        <td>
+                            <a href="/vendedores/{{$vendedor->id}}/vendas"> Vendas</a>
+                            <a href="/vendedores/{{$vendedor->id}}>/edit"> Editar</a>
+                            <a href="/vendedores/{{$vendedor->id}}/delete"> Excluir</a>
+
+                        </td>
+                    </tr>
+
+                @endforeach
+            @else
                 <tr>
-                    <td>{{ $vendedor->id }}</td>
-                    <td>{{ $vendedor->nome }}</td>
-                    <td>{{ $vendedor->email }}</td>
-                    <td>
-                        <a href="/vendedores/{{$vendedor->id}}/vendas"> Vendas</a>
-                        <a href="/vendedores/{{$vendedor->id}}>/edit"> Editar</a>
-                        <a href="/vendedores/{{$vendedor->id}}/delete"> Excluir</a>
-
-                    </td>
+                    <td> Não existe Vendedores! </td>
                 </tr>
+            @endif
 
-            @endforeach
         </tbody>
+
     </table>
+    <br/>
 
     <a href="/vendedores/cadastrar"> Cadastrar </a>
 @endsection
