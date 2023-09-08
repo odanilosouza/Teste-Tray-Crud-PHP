@@ -19,8 +19,5 @@ class Vend extends Model
         return $valorVenda * (8.5 / 100);
     }
 
-
-
-
     use HasFactory;
 }

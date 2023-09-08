@@ -1,10 +1,10 @@
-@extends('layouts.app') <!-- Estendendo o layout principal -->
+@extends('app')
 
-@section('content') <!-- Preenchendo a seção 'content' -->
+@section('content')
     <h1>Criar Novo Vendedor</h1>
 
-    <form method="POST" action="/vendedores/store">
-        @csrf <!-- Token CSRF para proteção contra ataques de falsificação de solicitação entre sites -->
+    <form method="POST" action="/vendedores">
+        @csrf
 
         <div class="form-group">
             <label for="nome">Nome</label>
@@ -15,8 +15,6 @@
             <label for="email">E-mail</label>
             <input type="email" class="form-control" id="email" name="email" required>
         </div>
-
-        <!-- Adicione mais campos do formulário conforme necessário -->
 
         <button type="submit" class="btn btn-primary">Criar Vendedor</button>
     </form>
