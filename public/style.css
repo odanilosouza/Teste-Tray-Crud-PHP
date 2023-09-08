@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Minha Aplicação</title>
-</head>
-<body>
-
-@section('header')
-@show
-
-<main>
-    @yield('content')
-    <style>
-        /* Estilos para tabelas */
+/* Estilos para tabelas */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -135,53 +119,4 @@ h1 {
     background-color: #007bff;
 
 }
-
-/* Estilos para o formulário */
-form {
-    width: 300px;
-    margin: 0 auto;
-}
-
-/* Estilos para o rótulo (label) */
-label {
-    display: block; /* Faz com que os rótulos ocupem uma linha inteira */
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-/* Estilos para os campos de entrada (input) */
-input[type="text"],
-input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-
-/* Estilos para o botão de envio */
-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-
-    </style>
-</main>
-
-@section('footer')
-@show
-
-
-</body>
-</html>
 

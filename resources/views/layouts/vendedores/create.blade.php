@@ -18,5 +18,6 @@
         <br/>
 
         <button type="submit" class="btn btn-primary">Cadastrar </button>
+        <a href="/vendedores" type="submit" class="btn btn-primary">Voltar</a href="/vendedores">
     </form>
 @endsection

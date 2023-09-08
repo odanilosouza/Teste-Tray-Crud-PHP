@@ -40,5 +40,6 @@
     <br/>
 
     <a href="/vendedores/<?php echo $vendedor->id; ?>/cadastrar_venda">Cadastrar</a>
+    <a href="/vendedores" type="submit" class="btn btn-primary">Voltar</a href="/vendedores">
 
 @endsection

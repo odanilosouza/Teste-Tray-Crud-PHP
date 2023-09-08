@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Models\Venda;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,7 +17,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            $dataAtual = Carbon::today();
+
+            $vendas = Venda::whereDate('data', $dataAtual)->get();
+
+            $totalVendas = $vendas->sum('valor');
+
+            return [
+                'data' => $dataAtual->format('d-m-Y'),
+                'total' => $totalVendas,
+            ];
+        })->daily('20:00');
     }
 
     /**
@@ -30,3 +43,6 @@ class Kernel extends ConsoleKernel
         require base_path('routes/console.php');
     }
 }
+
+
+
