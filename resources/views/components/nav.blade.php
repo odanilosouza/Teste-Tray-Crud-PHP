@@ -1,1 +1,6 @@
-<nav> Este é o header</nav>
+<nav>
+<ul>
+    <li><a href="/vendedores">Listagem</a></li>
+
+</ul>
+</nav>

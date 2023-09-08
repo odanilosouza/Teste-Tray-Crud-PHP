@@ -8,9 +8,12 @@ use App\Models\Vendedor;
 
 class VendedorController extends Controller
 {
+    public function welcome() {
+        return view('welcome');
+    }
     public function index() {
         $vendedores = Vendedor::all();
-        return view('layouts/app', compact('vendedores'));
+        return view('/layouts/index', compact('vendedores'));
     }
 
     public function create() {
@@ -33,11 +36,10 @@ class VendedorController extends Controller
         $vendedor = new Vendedor();
         $vendedor->nome = $request->input('nome');
         $vendedor->email = $request->input('email');
-        // dd($vendedor);
         $vendedor->save();
 
 
-        return redirect('/welcome');
+        return redirect('/vendedores');
         //Redirecionamento para páginas de listagem de vendedores
        // return redirect()->route('/vendedores')->with('Sucesso', 'Vendedor atualizado com sucesso!');
 
@@ -46,36 +48,28 @@ class VendedorController extends Controller
     public function edit($id) {
         //Busca o vendedor pelo ID
         $vendedor = Vendedor::findOrFail($id);
-    // Retorna a view de edição com os dados do vendedor
-    return view('vendedores.edit', compact('vendedor'));
+        // Retorna a view de edição com os dados do vendedor
+        return view('/layouts/edit', compact('vendedor'));
     }
 
     public function update(Request $request, $id) {
-        $request->validate([
-            'nome' => 'required',
-            'email' => 'required|email|unique:vendedores,email,'.$id,
-
-        ],[
-            'nome.required' => 'O campo nome é obrigatório',
-            'email.required' => 'O campo email é obrigatório',
-            'email.email' => 'Por favor, insira um endereço de email valido',
-            'email.email' => 'Este endereço de email já está em uso',
-        ]);
 
         $vendedor = Vendedor::findOrFail($id);
         $vendedor->nome = $request->input('nome');
         $vendedor->email = $request->input('email');
+        // Salvar o modelo no banco de dados
         $vendedor->save();
 
-        //Redirecionamento para páginas de listagem de vendedores
-        return redirect('/vendedores')->with('Sucesso', 'Vendedor atualizado com sucesso!');
-        }
+        // Redirecionar após a atualização
+        return redirect('/vendedores')->with('success', 'Vendedor atualizado com sucesso!');
+    }
+
 
         public function delete($id) {
             $vendedor = Vendedor::findOrFail($id);
             $vendedor->delete();
 
-            return redirect()->route('vendedores.index')->with('Sucess', 'Vendedor excluido com sucesso!');
+            return redirect('/vendedores')->with('success', 'Vendedor atualizado com sucesso!');
 
         }
 

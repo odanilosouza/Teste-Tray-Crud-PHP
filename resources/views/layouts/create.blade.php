@@ -1,30 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cadastrar Vendedor</title>
-</head>
-<body>
-    <h1>Cadastrar Vendedor</h1>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+@extends('layouts.app') <!-- Estendendo o layout principal -->
+
+@section('content') <!-- Preenchendo a seção 'content' -->
+    <h1>Criar Novo Vendedor</h1>
+
+    <form method="POST" action="/vendedores/store">
+        @csrf <!-- Token CSRF para proteção contra ataques de falsificação de solicitação entre sites -->
+
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" required>
         </div>
-    @endif
-    <form method="post" action="/vendedores/store">
-        @csrf
-        <div>
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome" id="nome" required>
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" required>
         </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required>
-        </div>
-        <button type="submit">Cadastrar</button>
+
+        <!-- Adicione mais campos do formulário conforme necessário -->
+
+        <button type="submit" class="btn btn-primary">Criar Vendedor</button>
     </form>
-</body>
-</html>
+@endsection
