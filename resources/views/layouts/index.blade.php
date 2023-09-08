@@ -19,6 +19,7 @@
                     <td>{{ $vendedor->nome }}</td>
                     <td>{{ $vendedor->email }}</td>
                     <td>
+                        <a href="/vendedores/<?php echo $vendedor->id; ?>/vendas"> Vendas</a>
                         <a href="/vendedores/<?php echo $vendedor->id; ?>/edit"> Editar</a>
                         <a href="/vendedores/<?php echo $vendedor->id; ?>/delete"> Excluir</a>
 

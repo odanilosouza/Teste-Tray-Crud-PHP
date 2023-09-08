@@ -18,16 +18,11 @@ Route::get('/vendedores/{id}/delete', [VendedorController::class, 'delete']);
 
 //Rotas para vendas
 
-Route::get('/vendas', [VendController::class, 'index']);
-Route::get('/vendas/create', [VendController::class, 'create']);
-Route::post('/vendas/store', [VendController::class, 'store']);
-Route::get('/vendas/{id}/edit', [VendController::class, 'edit']);
-Route::put('/vendas/{id}/update', [VendController::class, 'update']);
-Route::delete('/vendas/{id}', [VendController::class, 'delete']);
+Route::get('/vendedores/{vendedorId}/vendas', [VendController::class, 'vendas']);
+Route::get('/vendedores/{vendedorId}/cadastrar_venda', [VendController::class, 'createView']);
+Route::post('/vendedores/{vendedorId}/vendas', [VendController::class, 'post']);
+// Route::get('/vendedores/{id}/vendas/{id}', [VendController::class, 'edit']);
+// Route::put('/vendedores/{id}/vendas/{id}', [VendController::class, 'update']);
+// Route::delete('/vendedores/{id}/vendas/{id}', [VendController::class, 'delete']);
 
 
-//Rota para envio de e-mails- próxima fase
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });

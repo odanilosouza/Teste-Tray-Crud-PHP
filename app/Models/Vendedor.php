@@ -10,8 +10,9 @@ class Vendedor extends Model
     protected $table = "vendedores";
     protected $fillable = ['nome', 'email'];
 
-    public function calcularComissao() {
-        return $this->vendas->sum('valor') * (8.5 / 100); //Comissão fixa
+    public function vendas() {
+        return $this->hasMany(Vend::class, 'vendedor_id');
     }
+
     use HasFactory;
 }

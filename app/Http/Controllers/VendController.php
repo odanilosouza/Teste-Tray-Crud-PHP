@@ -8,19 +8,26 @@ use App\Models\Vendedor;
 
 class VendController extends Controller
 {
-    public function index() {
-        $venda = Vend::all();
-        return view('vendas.index', compact('vendas'));
+    public function vendas(Request $request, $vendedorId) {
+        $vendedor = Vendedor::find($vendedorId);
+        if ($vendedor) {
+            $vendas = $vendedor->vendas;
+        } else {
+
+            $vendas = [];
+        }
+
+        return view('layouts/vendas/index', compact('vendedor','vendas'));
     }
 
-    public function create() {
-        return view('vendas.create');
+    public function createView() {
+        return view('layouts/vendas/create');
     }
 
-    public function store(Request $request) {
+    public function post(Request $request, $vendedorId) {
      // Validação dos dados
         $request->validate([
-            'data' => 'O campo data é obrigatório',
+            'data.required' => 'O campo data é obrigatório',
             'valor.required' => 'O campo valor é obrigatório',
         ]);
 
@@ -28,11 +35,12 @@ class VendController extends Controller
         $venda = new Vend();
         $venda->data = $request->input('data');
         $venda->valor = $request->input('valor');
+        $venda->vendedor_id = $vendedorId;
 
         $venda->save();
 
     // Redirecionamento para a página de listagem de vendas
-    return redirect()->route('vendas/index')->with('Sucess', 'Venda criada com sucesso!');
+    return redirect("/vendedores/{$vendedorId}/vendas")->with('Sucess', 'Venda criada com sucesso!');
     }
     public function update(Request $request, $id) {
         $request->validate([
